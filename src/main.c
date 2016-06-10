@@ -20,23 +20,16 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	double discriminant;
-	discriminant = (b * b) - (4 * a * c);
+	double x1, x2;
+	int amount;
+	roots(a, b, c, &amount, &x1, &x2);
 
-	if (discriminant < 0) {
+	if (amount == 0) {
 		printf("This equation has noo roots\n");
-		exit(EXIT_SUCCESS);
-	} else if (discriminant == 0) {
-		double x;
-		x = - b / (2 * a);
-		printf("There is only one root:\n%f\n", x);
-		exit(EXIT_SUCCESS);
-	} else if (discriminant > 0) {
-		double x1, x2;
-		x1 = (- b + sqrt(discriminant)) / (2 * a);
-		x2 = (- b - sqrt(discriminant)) / (2 * a);
+	} else if (amount == 1) {
+		printf("There is only one root:\n%f\n", x1);
+	} else if (amount == 2) {
 		printf("There are two roots:\nx1 = %f\tx2 = %f\n", x1, x2);
-		exit(EXIT_SUCCESS);
 	}
 
 	return EXIT_SUCCESS;
